@@ -8,4 +8,4 @@ before_install:
 script:
     # -- -- coverage makes the npm test to finish and not hang in input mode
     # for the node.js app an env variable is needed (CI=True)
-    - docker run -e CI=true windsofhades/docker-react npm run test -- -- coverage
+    - docker run -e CI=true windsofhades/docker-react npm run test -- --coverage
