@@ -9,3 +9,15 @@ script:
     # -- -- coverage makes the npm test to finish and not hang in input mode
     # for the node.js app an env variable is needed (CI=True)
     - docker run -e CI=true windsofhades/docker-react npm run test -- --coverage
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-958321247026"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
