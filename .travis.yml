@@ -1,0 +1,11 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t windsofhades/docker-react -f Dockerfile.dev .
+
+script:
+    # -- -- coverage makes the npm test to finish and not hang in input mode
+    # for the node.js app an env variable is needed (CI=True)
+    - docker run -e CI=true windsofhades/docker-react npm run test -- -- coverage
